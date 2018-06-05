@@ -1,35 +1,27 @@
 import React, { Component } from 'react';
-import nlogo from './nlogo.png';
+import logo from './logo.png';
 import './App.css';
+import Product from './Product/Product';
 
-class App extends React.Component {
-  constructor(props) {
-     super(props);
-     this.state = {value: ''};
-
-     this.handleChange = this.handleChange.bind(this);
-     this.handleSubmit = this.handleSubmit.bind(this);
-   }
-
-   handleChange(event) {
-     this.setState({value: event.target.value});
-   }
-
-   handleSubmit(event) {
-     alert('A name was submitted: ' + this.state.value);
-     event.preventDefault();
-   }
+class App extends Component {
 
   render() {
     return (
       <div className="App">
         <header className="App-header">
-          <img src={nlogo} className="App-logo" alt="logo" />
+          <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">Welcome to Nidennis React Shopping List</h1>
         </header>
+      <Product />
+      <div class="formNewItem">
+       <button onClick={this.addItem}>OK</button>
+       </div>
       </div>
     );
+  }
 
+  addItem = () =>{
+    console.log('Added item');
   }
 
 }
