@@ -1,0 +1,37 @@
+ul{
+  list-style-type: none;
+  padding: 15px;
+  font-size: 1.5em;
+  text-align: left;
+}
+
+.card li {
+  padding: 20px;
+  width: 50%;
+  padding-bottom: 10px;
+  margin: 0 auto;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+}
+
+.ProductList {
+  display: block;
+  padding: 20px;
+  box-shadow: 3px 4px #8a8a8a;
+}
+
+
+.title h2 {
+
+  position: relative;
+  font-family: cursive;
+  text-align: center;
+  padding: 20px;
+  width: 60%;
+  padding-bottom: 10px;
+  margin: 0 auto;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+}

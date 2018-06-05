@@ -2,37 +2,71 @@ import React, { Component } from 'react';
 import logo from './logo.png';
 import './App.css';
 import Product from './Product/Product';
+import ItemProduct from './ItemProduct/ItemProduct';
 
 class App extends Component {
+  constructor(props) {
+      super(props);
+      this.state = {
+        products:[]
+      };
+      this.addNewProduct = this.addNewProduct.bind(this);
+      this.removeProduct=this.removeProduct.bind(this);
+    }
+
+
+  addNewProduct = (p) => {
+    if (this.userInput.value!==""){
+        var newItem = {
+        text: this.userInput.value,
+        key: Date.now()
+      };
+
+      this.setState((prevState) => {
+      return {
+        products: prevState.products.concat(newItem)
+      };
+      });
+    }
+    this.userInput.value="";
+    console.log(this.state.products);
+    p.preventDefault();
+  }
+
+  removeProduct(key){
+    var filteredProduct = this.state.products.filter(function(product){
+    return (product.key !== key)
+    });
+  this.setState({
+    products: filteredProduct
+  });
+}
 
   render() {
     return (
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to Nidennis React Shopping List</h1>
+          <h1 className="App-title">NDB Online Shop</h1>
         </header>
-      <Product />
-      <div class="formNewItem">
-       <button onClick={this.addItem}>OK</button>
-       </div>
+        <div class="formNewItem">
+              <form onSubmit={this.addNewProduct}>
+                 <label>
+                      <input ref={(id)=>this.userInput = id} placeholder="Enter product"/>
+                  </label>
+                   <button type="submit">ADD</button>
+              </form>
+
+         </div>
+         <ItemProduct adding={this.state.products}
+                      remove={this.removeProduct}/>
+
       </div>
     );
   }
 
-  addItem = () =>{
-    console.log('Added item');
-  }
+
 
 }
 
-
 export default App;
-//
-//
-// function Form(){
-//   return (
-//
-//   );
-// }
-// ReactDOM.render(<Form/> title="Title" qty="Quantity"/>,document.quarySelector('#formNewItem'));
