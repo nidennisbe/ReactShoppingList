@@ -9,12 +9,13 @@ class App extends Component {
       super(props);
       this.state = {
         products:[]
+      
       };
       this.addNewProduct = this.addNewProduct.bind(this);
       this.removeProduct=this.removeProduct.bind(this);
     }
 
-
+//ADD NEW
   addNewProduct = (p) => {
     if (this.userInput.value!==""){
         var newItem = {
@@ -33,6 +34,8 @@ class App extends Component {
     p.preventDefault();
   }
 
+//REMOVE
+
   removeProduct(key){
     var filteredProduct = this.state.products.filter(function(product){
     return (product.key !== key)
@@ -41,6 +44,8 @@ class App extends Component {
     products: filteredProduct
   });
 }
+
+//DISPLAY USER INPUT FORM
 
   render() {
     return (

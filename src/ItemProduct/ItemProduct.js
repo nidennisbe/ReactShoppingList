@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import './ItemProduct.css';
-
+import ictrash from '../ictrash.png';
 class ItemProduct extends Component {
   constructor (props) {
     super (props);
@@ -8,8 +8,9 @@ class ItemProduct extends Component {
     this.removeProduct= this.removeProduct.bind(this);
   }
   addProduct(product){
-    return <li onClick={() =>this.removeProduct(product.key)}
-      key={product.key}>{product.text}</li>
+    return <li
+      key={product.key}>{product.text} <img src={ictrash} onClick={() => this.removeProduct(product.key)} /></li>
+
   }
 
   removeProduct(key){
@@ -22,11 +23,14 @@ class ItemProduct extends Component {
 
     return (
       <div class ="card">
-          <ul >
+          <ul>
               <div class= "title">
                   <h2>Product List</h2>
               </div>
-              {listProducts }
+
+              <span>{listProducts}</span>
+
+
           </ul>
       </div>
     );
