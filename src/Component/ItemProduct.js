@@ -11,6 +11,7 @@ class ItemProduct extends Component {
     this.addProduct=this.addProduct.bind(this);
     this.removeProduct= this.removeProduct.bind(this);
     this.updateProduct=this.updateProduct.bind(this);
+    this.editProduct=this.editProduct.bind(this);
   }
   addProduct(product){
     return <li
@@ -30,21 +31,25 @@ class ItemProduct extends Component {
     this.props.update(product,key);
     console.log(product,key);
   }
+  editProduct(product,key){
+     this.props.edit(product,key);
+  }
+
 
   render () {
+
     var productAdding = this.props.adding;
     var listProducts = productAdding.map(this.addProduct);
 
     return (
       <div className ="card">
-
       <ul>
+
       <div className="itemNumber">{listProducts.length}</div>
       <div className= "title">
       <h2>Product List </h2>
-      <span>{listProducts.length > 0 ? listProducts: <EmptyList/>}</span>
+      <span onClick={() => this.editProduct(this)}>{listProducts.length > 0 ? listProducts: <EmptyList/>}</span>
       </div>
-
 
       </ul>
       </div>
